@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.liambateman.stoic-pulse",
+  "name": "Stoic Pulse",
+  "version": "1.0.0",
+  "author": "Liam Bateman",
+  "license": "MIT",
+  "description": "Receive an offline line from public-domain Stoic works at a configurable interval.",
+  "kinds": [
+    "service",
+    "bar-widget"
+  ],
+  "keepLoaded": true,
+  "entryPoints": {
+    "service": "Service.qml",
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Stoic Pulse",
+    "description": "Periodic Stoic lines with pause, send-now, and interval controls.",
+    "category": "Productivity",
+    "aliases": [
+      "stoic",
+      "quotes",
+      "meditations",
+      "reminders"
+    ],
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "intervalMinutes": 60,
+      "notificationsEnabled": true,
+      "notifyOnStart": false
+    },
+    "schema": [
+      {
+        "key": "intervalMinutes",
+        "type": "integer",
+        "label": "Interval (minutes)",
+        "description": "Time between Stoic notifications.",
+        "min": 5,
+        "max": 1440,
+        "step": 5,
+        "defaultValue": 60
+      },
+      {
+        "key": "notificationsEnabled",
+        "type": "boolean",
+        "label": "Notifications enabled",
+        "description": "Pause or resume the recurring Stoic line.",
+        "defaultValue": true
+      },
+      {
+        "key": "notifyOnStart",
+        "type": "boolean",
+        "label": "Notify when the shell starts",
+        "description": "Show a line immediately after login or a shell restart.",
+        "defaultValue": false
+      }
+    ]
+  }
+}

@@ -55,6 +55,19 @@ BarWidget {
     if (pulseService) pulseService.notifyNow(true)
   }
 
+  function status() {
+    return JSON.stringify({
+      serviceAvailable: pulseService !== null,
+      notificationsEnabled: notificationsEnabled,
+      intervalMinutes: intervalMinutes,
+      quoteCount: Model.quoteCount(),
+      notificationCount: pulseService ? pulseService.notificationCount : 0,
+      lastNotificationAt: pulseService ? pulseService.lastNotificationAt : 0,
+      nextNotificationAt: pulseService ? pulseService.nextNotificationAt : 0,
+      lastError: pulseService ? pulseService.lastError : "Stoic Pulse service is unavailable."
+    })
+  }
+
   implicitWidth: trigger.implicitWidth
   implicitHeight: trigger.implicitHeight
 
@@ -74,6 +87,7 @@ BarWidget {
     function hide(): void { root.close() }
     function toggle(): void { root.toggle() }
     function notifyNow(): void { root.sendNow() }
+    function status(): string { return root.status() }
     function pause(): void { if (root.notificationsEnabled) root.toggleNotifications() }
     function resume(): void { if (!root.notificationsEnabled) root.toggleNotifications() }
   }
@@ -166,6 +180,16 @@ BarWidget {
         color: Qt.darker(root.bar.foreground, 1.3)
         font.family: root.bar.fontFamily
         font.pixelSize: Style.font.bodySmall
+      }
+
+      Text {
+        width: parent.width
+        visible: text.length > 0
+        text: root.pulseService ? root.pulseService.lastError : "Stoic Pulse service is unavailable."
+        color: root.bar.foreground
+        font.family: root.bar.fontFamily
+        font.pixelSize: Style.font.bodySmall
+        wrapMode: Text.WordWrap
       }
 
       Row {

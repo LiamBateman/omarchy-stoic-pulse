@@ -31,9 +31,10 @@ Item {
 
   function settingsEntry() {
     var config = shell && shell.shellConfig ? shell.shellConfig : null
-    if (!config) return ({})
-
-    var layout = config.bar && config.bar.layout ? config.bar.layout : null
+    // Current Omarchy exposes a scoped barConfig to third-party services.
+    // Retain the full-shell fallback for older installations.
+    var barConfig = shell && shell.barConfig ? shell.barConfig : (config ? config.bar : null)
+    var layout = barConfig && barConfig.layout ? barConfig.layout : null
     var sections = ["left", "center", "right"]
     if (layout) {
       for (var s = 0; s < sections.length; s++) {
@@ -45,7 +46,7 @@ Item {
       }
     }
 
-    var plugins = Array.isArray(config.plugins) ? config.plugins : []
+    var plugins = config && Array.isArray(config.plugins) ? config.plugins : []
     for (var p = 0; p < plugins.length; p++) {
       if (plugins[p] && String(plugins[p].id || "") === pluginId) return plugins[p]
     }
@@ -88,7 +89,7 @@ Item {
       return false
     }
 
-    var source = quote.work + " · " + quote.locator + " · George Long translation"
+    var source = Model.quoteSource(quote)
     notificationProcess.command = [
       "notify-send",
       "--app-name=Stoic Pulse",
@@ -124,6 +125,7 @@ Item {
 
   Timer {
     id: scheduleTimer
+    objectName: "scheduleTimer"
     interval: root.intervalMinutes * 60 * 1000
     running: root.autoTick && root.notificationsEnabled && root.shell !== null
     repeat: true

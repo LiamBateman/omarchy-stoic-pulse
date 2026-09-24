@@ -1,8 +1,18 @@
 # Text sources and rights
 
-Stoic Pulse bundles a small selection of complete lines from George Long's
-public-domain English translations. Punctuation and typographic quotation
+Stoic Pulse bundles a curated selection of complete passages from public-domain
+English translations. Punctuation and typographic quotation
 marks follow the Standard Ebooks editions.
+
+All 100 passages and their locators were verified against the pinned revisions
+below for version 1.1.0. The bank contains 55 Marcus Aurelius, 25 Epictetus, and
+20 Seneca passages. Editorial footnote markers are omitted.
+
+For *Meditations* and *Discourses*, paragraph numbers count the direct body
+paragraphs in the named book or chapter of these editions, excluding headings
+and inset quotations. They are edition-specific paragraph references, not
+conventional numbered sections. *The Enchiridion* and Seneca references use the
+editions' numbered sections and chapters.
 
 ## Marcus Aurelius
 
@@ -26,10 +36,20 @@ marks follow the Standard Ebooks editions.
   - `8c154d40a6f85e32a5711001a28c1b55ab56d3c8`
   - `218406b563346743af3ece4a22723a245b0ccb22`
 
-The original texts and George Long translations are in the public domain.
-Standard Ebooks releases its own contributions under CC0 1.0. The edition
-pages and upstream repositories remain the authoritative rights references.
+## Seneca
+
+- Works: *On the Shortness of Life*, *On a Happy Life*, *On Peace of Mind*,
+  *On Providence*, and *On the Firmness of the Wise Person*
+- Translator: Aubrey Stewart
+- Edition: <https://standardebooks.org/ebooks/seneca/dialogues/aubrey-stewart>
+- Source repository: <https://github.com/standardebooks/seneca_dialogues_aubrey-stewart>
+- Source revision used for verification: `b950b7cb47d81377ab7d66ce7a14fbb9e1d11f5c`
+
+The original texts and the George Long and Aubrey Stewart translations are in
+the public domain. Standard Ebooks releases its own contributions under CC0
+1.0. The edition pages and upstream repositories remain the authoritative
+rights references.
 
 The selection metadata was cross-checked against David Ojeda's offline
-[Stoic Meditations](https://github.com/davidojedalopez/omarchy-stoic-meditations)
-corpus, which records the same pinned Standard Ebooks revisions.
+[Stoic Meditations](https://github.com/davidojedalopez/omarchy-stoic-meditations).
+The pinned editions above are authoritative for the bundled text and locators.

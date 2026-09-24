@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "io.github.liambateman.stoic-pulse",
   "name": "Stoic Pulse",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Liam Bateman",
   "license": "MIT",
   "description": "Receive an offline line from public-domain Stoic works at a configurable interval.",
